@@ -1,4 +1,4 @@
-import { sequelize, Course, CourseOutcome, IloItem, TosStatus } from './models/index.js';
+import { sequelize, Course, CourseOutcome, IloItem, TosStatus, User } from './models/index.js';
 
 const courses = [
     { code: 'BSCS313L', name: 'Human & Computer Interaction' },
@@ -243,6 +243,9 @@ async function seed() {
     await sequelize.sync({ force: true });
     await Course.bulkCreate(courses);
     await TosStatus.bulkCreate(statuses);
+
+    await User.create({ username: 'admin', passwordHash: 'admin123', name: 'Administrator', role: 'admin' });
+    await User.create({ username: 'instructor', passwordHash: 'instructor123', name: 'NORTON, MONICA', role: 'instructor' });
 
     for (const data of courseData) {
         for (const outcome of data.outcomes) {

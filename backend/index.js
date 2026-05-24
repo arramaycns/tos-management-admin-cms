@@ -8,6 +8,11 @@ import coursesRouter from './routes/courses.js';
 import outcomesRouter from './routes/outcomes.js';
 import itemsRouter from './routes/items.js';
 import statusRouter from './routes/status.js';
+import authRouter from './routes/auth.js';
+import academicPeriodsRouter from './routes/academicPeriods.js';
+import adminCoursesRouter from './routes/adminCourses.js';
+import assignmentsRouter from './routes/assignments.js';
+import instructorsRouter from './routes/instructors.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -15,6 +20,11 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/auth', authRouter);
+app.use('/api/admin/academic-periods', academicPeriodsRouter);
+app.use('/api/admin/courses', adminCoursesRouter);
+app.use('/api/admin/assignments', assignmentsRouter);
+app.use('/api/admin/instructors', instructorsRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/courses', outcomesRouter);
 app.use('/api/courses', itemsRouter);

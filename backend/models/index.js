@@ -6,6 +6,9 @@ import AssessmentItem from './AssessmentItem.js';
 import ItemChoice from './ItemChoice.js';
 import ItemRubric from './ItemRubric.js';
 import TosStatus from './TosStatus.js';
+import User from './User.js';
+import AcademicPeriod from './AcademicPeriod.js';
+import CourseAssignment from './CourseAssignment.js';
 
 Course.hasMany(CourseOutcome, { foreignKey: 'courseCode', as: 'outcomes' });
 CourseOutcome.belongsTo(Course, { foreignKey: 'courseCode', as: 'course' });
@@ -25,4 +28,4 @@ ItemRubric.belongsTo(AssessmentItem, { foreignKey: 'itemId', as: 'item' });
 Course.hasOne(TosStatus, { foreignKey: 'courseCode', as: 'tosStatus' });
 TosStatus.belongsTo(Course, { foreignKey: 'courseCode', as: 'course' });
 
-export { sequelize, Course, CourseOutcome, IloItem, AssessmentItem, ItemChoice, ItemRubric, TosStatus };
+export { sequelize, Course, CourseOutcome, IloItem, AssessmentItem, ItemChoice, ItemRubric, TosStatus, User, AcademicPeriod, CourseAssignment };

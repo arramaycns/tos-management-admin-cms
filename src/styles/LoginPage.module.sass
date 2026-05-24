@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
+.page
+  width: 100vw
+  height: 100vh
+  display: flex
+  justify-content: center
+  align-items: center
+  background: #F3F4F6
+
+.card
+  background: white
+  border-radius: 12px
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.1)
+  width: 400px
+  overflow: hidden
+
+.logoSection
+  background: #1A1A1A
+  padding: 40px 30px 30px
+  text-align: center
+  color: white
+
+  img
+    width: 64px
+    margin-bottom: 12px
+
+  h2
+    margin: 0
+    font-size: 22px
+    font-weight: 700
+
+  p
+    margin: 4px 0 0
+    font-size: 13px
+    color: #9CA3AF
+
+.form
+  padding: 30px
+
+  h3
+    margin: 0 0 20px
+    font-size: 18px
+    font-weight: 600
+    color: #1A1A1A
+
+.error
+  background: #FEF2F2
+  color: #B91C1C
+  padding: 10px 14px
+  border-radius: 6px
+  font-size: 13px
+  margin-bottom: 16px
+  border: 1px solid #FECACA
+
+.input
+  width: 100%
+  padding: 12px 14px
+  border: 1px solid #D1D5DB
+  border-radius: 6px
+  font-size: 14px
+  margin-bottom: 14px
+  outline: none
+  font-family: 'Poppins', sans-serif
+  transition: border-color 0.15s
+
+  &:focus
+    border-color: #EA1212
+
+.btn
+  width: 100%
+  padding: 12px
+  background: #EA1212
+  color: white
+  border: none
+  border-radius: 6px
+  font-size: 15px
+  font-weight: 600
+  cursor: pointer
+  font-family: 'Poppins', sans-serif
+  transition: background 0.15s
+
+  &:hover
+    background: #C00000
+
+  &:disabled
+    background: #FCA5A5
+    cursor: not-allowed

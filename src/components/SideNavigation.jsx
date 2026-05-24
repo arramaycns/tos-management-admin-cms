@@ -3,12 +3,12 @@ import unclogo from '../assets/unclogo.png';
 import {FileText} from "react-feather";
 import {useNavigate, useLocation} from "react-router-dom";
 import {LogOut} from "react-feather";
+import {useAuth} from "../context/AuthContext";
 
 const SideNavigation = () => {
-
-
     const navigate = useNavigate();
     const location = useLocation();
+    const { logout } = useAuth();
 
     let selected = 'Syllabus';
 
@@ -24,6 +24,11 @@ const SideNavigation = () => {
         else navigate('/');
     };
 
+    const handleLogout = () => {
+        logout();
+        navigate('/login', { replace: true });
+    };
+
     return(
         <div className={styles.container}>
             <div className={styles.logo}>
@@ -37,9 +42,7 @@ const SideNavigation = () => {
                     <FileText size={24}/> TOS
                 </div>
 
-
-
-                <div className={styles.listB}>
+                <div className={styles.listB} onClick={handleLogout}>
                     <LogOut size={24} color={'#F94545'}/> Log Out
                 </div>
             </div>
