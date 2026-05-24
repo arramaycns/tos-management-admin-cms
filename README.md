@@ -36,57 +36,61 @@ Design and Tools
 
 - Development Environment: Webstorm / VS Code
 
-Key Features
+# Key Features
 1. Admin Content Management System
-Academic Periods: Centralized creation and activation of academic years, semesters, and exam types.
+- Academic Periods: Centralized creation and activation of academic years, semesters, and exam types.
 
-Course Catalog: Maintenance of a searchable and filterable database of university courses.
+- Course Catalog: Maintenance of a searchable and filterable database of university courses.
 
-CO and ILO Templates: Management of Course Outcomes and Intended Learning Outcomes mapped to specific courses.
+- CO and ILO Templates: Management of Course Outcomes and Intended Learning Outcomes mapped to specific courses.
 
-Assignments: Dynamic linking of instructors to specific courses for active academic terms.
+- Assignments: Dynamic linking of instructors to specific courses for active academic terms.
 
 2. Instructor TOS Module
-Automated Data Retrieval: Direct fetching of approved COs and ILOs from the Learning Plan.
+- Automated Data Retrieval: Direct fetching of approved COs and ILOs from the Learning Plan.
 
-Dynamic Calculations: Real-time computation of percentage weights and point distributions based on target inputs.
+- Dynamic Calculations: Real-time computation of percentage weights and point distributions based on target inputs.
 
-Assessment Mapping: Tools for tagging items with cognitive levels (Bloom’s Taxonomy) and point values.
+- Assessment Mapping: Tools for tagging items with cognitive levels (Bloom’s Taxonomy) and point values.
 
-Reusability: Features to save drafts and pre-fill data from previous TOS reports.
+- Reusability: Features to save drafts and pre-fill data from previous TOS reports.
 
 Installation Guide
 1. Clone the Repository
-Bash
-git clone https://github.com/your-username/your-repository-name.git
-cd your-repository-name
+
+    Bash
+    git clone https://github.com/your-username/your-repository-name.git
+    cd your-repository-name
+   
 2. Environment Setup
-The project uses Docker to manage the database and backend environment.
 
-Bash
-docker-compose up -d
+    The project uses Docker to manage the database and backend environment.
+
+    Bash
+    docker-compose up -d
+   
 3. Frontend Setup
-Bash
-# Install dependencies
-npm install
+    Bash
+    # Install dependencies
+    npm install
 
-# Start the development server
-npm run dev
-The application will be accessible at http://localhost:5173.
+    # Start the development server
+    npm run dev
+    The application will be accessible at http://localhost:5173.
 
-Interface and Communication
+#Interface and Communication
 Communication Protocol
-All communication between the React.js frontend and Express.js backend occurs through a RESTful API.
+- All communication between the React.js frontend and Express.js backend occurs through a RESTful API.
 
-Data Format: JSON (JavaScript Object Notation).
+- Data Format: JSON (JavaScript Object Notation).
 
-Authentication: Token-based authentication required for all data-sensitive requests.
+- Authentication: Token-based authentication required for all data-sensitive requests.
 
 API Structure
-GET: Resource retrieval (Courses, Outcomes, TOS Status)
+- GET: Resource retrieval (Courses, Outcomes, TOS Status)
 
-POST: Creation of new records (Assignments, Periods)
+- POST: Creation of new records (Assignments, Periods)
 
-PUT / PATCH: Bulk updates and status changes
+- PUT / PATCH: Bulk updates and status changes
 
-DELETE: Removal of specific assignments or records
+- DELETE: Removal of specific assignments or records
