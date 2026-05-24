@@ -1,0 +1,24 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: tos_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: tos_rootpass
+      MYSQL_DATABASE: tos_management_db
+      MYSQL_USER: tos_user
+      MYSQL_PASSWORD: tos_pass
+    ports:
+      - "3307:3306"
+    volumes:
+      - tos_db_data:/var/lib/mysql
+
+  adminer:
+    image: adminer
+    container_name: tos_adminer
+    restart: always
+    ports:
+      - "8081:8080"
+
+volumes:
+  tos_db_data:

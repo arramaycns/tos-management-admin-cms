@@ -1,0 +1,1645 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// ORIGINAL CLASSES — reproduced exactly, not a single character changed.
+// Other pages import this file; these classes must remain untouched.
+// ═══════════════════════════════════════════════════════════════════════════════
+
+.container
+  width: 100%
+  display: flex
+  flex-direction: column
+  gap: 16px
+  background: white
+
+.section
+  flex-grow: 1
+  display: flex
+  flex-direction: column
+  height: max-content
+  padding: 20px 40px 20px 40px
+  border-radius: 5px
+  border: 1px solid #DDDFDF
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.25)
+  margin-bottom: 20px
+
+.sectionHeader
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 16px
+
+.uploadButton
+  padding: 10px 20px 10px 15px
+  background: #EA1212
+  color: white
+  border: none
+  border-radius: 20px
+  cursor: pointer
+  height: 40px
+  width: max-content
+  font-size: 14px
+  font-weight: 500
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+
+  &:hover
+    background: black
+
+.clearButton
+  padding: 10px 20px 10px 15px
+  background: #333
+  color: white
+  border: none
+  border-radius: 20px
+  cursor: pointer
+  height: 40px
+  width: max-content
+  font-size: 14px
+  font-weight: 500
+  display: flex
+  align-items: center
+  flex-wrap: wrap
+
+  &:hover
+    color: black
+    background: white
+
+.qctable
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+  border-spacing: 0
+
+  th
+    text-align: center
+    justify-content: center
+    font-weight: 500
+    color: #333
+    font-size: 14px
+    padding: 8px
+
+  td
+    vertical-align: middle
+    padding: 8px
+
+  &.TOSTable
+    th, td
+      padding: 0
+
+    th:nth-child(1), td:nth-child(1)
+      width: 20%
+
+    th:nth-child(2), td:nth-child(2)
+      width: 13.33%
+
+    th:nth-child(3), td:nth-child(3)
+      width: 13.33%
+
+    th:nth-child(4), td:nth-child(4)
+      width: 13.33%
+
+    th:nth-child(5), td:nth-child(5)
+      width: 13.33%
+
+    th:nth-child(6), td:nth-child(6)
+      width: 13.33%
+
+    th:nth-child(7), td:nth-child(7)
+      width: 13.33%
+
+.cellBox
+  width: 100%
+  min-height: 45px
+  padding: 10px
+  background: white
+  display: flex
+  justify-content: center
+  align-items: center
+  text-align: center
+  font-size: 14px
+
+  &.leftAlign
+    justify-content: flex-start
+    text-align: left
+
+  &.mainHeader
+    background: #F1F3F5
+    font-size: 16px
+
+  &.subHeader
+    background: #F1F3F5
+    font-weight: 400
+    font-size: 14px
+
+  input, .dropdown
+    pointer-events: auto
+
+  &.muted
+    background: #F1F3F5
+    font-weight: 500
+
+  &.mutedBold
+    font-weight: 600
+    background: #F1F3F5
+
+  &.readable
+    justify-content: center
+    background: #F9FAFB
+    border: 1px solid #E5E7EB
+    font-weight: 500
+
+  &.rightAlign
+    justify-content: flex-end
+    text-align: right
+
+.firstRow
+  padding-left: 5px
+  font-weight: 500
+  font-size: 16px
+
+.totalCuPoint
+  font-weight: 600
+  background: #F1F3F5
+  color: red
+
+.totalReqPoint
+  font-weight: 600
+  background: #F1F3F5
+  color: black
+
+.tableHeader
+  display: grid
+  grid-template-columns: 56px 1.5fr 120px 120px 64px 180px
+  font-weight: 500
+  color: #333
+  gap: 12px
+  margin: 0 0 10px 0
+  padding: 0
+
+.headerCell
+  text-align: center
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 36px
+  font-size: 13px
+
+.tableRow
+  display: grid
+  grid-template-columns: 56px 1.5fr 120px 120px 64px 180px
+  align-items: center
+  gap: 12px
+  margin-bottom: 12px
+  position: relative
+
+.numberCell
+  display: flex
+  align-items: center
+  justify-content: center
+  font-weight: 500
+  color: #6B7280
+  height: 36px
+  font-size: 13px
+
+.questionInput
+  width: 100%
+  min-height: 10px
+  padding: 5px 10px
+  border: 1px solid #DDDFDF
+  border-radius: 5px
+  font-size: 14px
+  resize: vertical
+  font-family: inherit
+
+.selectInput
+  width: 100%
+  padding: 10px 28px 10px 10px
+  border: 1px solid #DDDFDF
+  border-radius: 5px
+  font-size: 13px
+  background: white
+  appearance: none
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  background-position: right 10px center
+  height: 42px
+  box-sizing: border-box
+
+  &.disabled
+    background-color: #F3F4F6
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+
+.numberInput
+  width: 100%
+  padding: 10px
+  border: 1px solid #DDDFDF
+  border-radius: 5px
+  font-size: 13px
+  text-align: center
+  height: 42px
+  box-sizing: border-box
+
+.deleteButton
+  display: flex
+  background: #F94545
+  justify-content: center
+  align-items: center
+  padding: 0 5px
+  border-radius: 4px
+  cursor: pointer
+  height: 42px
+
+  &:hover
+    background: #DC2626
+
+.addRow
+  margin-top: 16px
+
+.input
+  width: 100%
+  height: 100%
+  padding: 0 6px
+  border: none
+  text-align: center
+  background: transparent
+  font-size: 14px
+
+  &:disabled
+    background: #F1F3F5
+    color: #777
+
+.rubricHeader
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 12px
+
+.rubricTools
+  display: flex
+  align-items: center
+  gap: 10px
+
+.rubricSelectWrap
+  position: relative
+  display: flex
+  align-items: center
+  width: 240px
+
+  select
+    width: 100%
+    height: 40px
+    padding: 0 10px 0 12px
+    border: 1px solid #DDDFDF
+    border-radius: 5px
+    font-size: 14px
+    appearance: none
+    background: white
+
+  option
+    font-size: 14px
+
+.dropdownArrow
+  position: absolute
+  right: 12px
+  pointer-events: none
+  color: #555
+
+.clearRubricBtn
+  height: 40px
+  width: 40px
+  border-radius: 5px
+  border: none
+  background: #F94545
+  color: white
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+
+  &:hover
+    background: #DC2626
+
+.clearRubricIcon
+  width: 18px
+  height: 18px
+  stroke-width: 2.5
+  flex-shrink: 0
+
+.rubricContainer
+  display: flex
+  flex-direction: column
+  width: 100%
+
+.rubricLabel
+  color: #000
+  text-align: left
+  font-family: Manrope, sans-serif
+  font-size: 16px
+  font-weight: 500
+  line-height: normal
+
+.rubricDropdown
+  font-size: 16px
+  display: flex
+  align-items: center
+  gap: 10px
+  align-self: stretch
+  border-radius: 3px
+  border: 1px solid #DCE2F0
+  padding-right: 20px
+  transition: border-color 0.2s ease-in-out
+  background: white
+
+  select
+    width: 100%
+    height: 100%
+    padding: 8px 15px
+    outline: none
+    border-radius: 3px
+    border: 0
+    font-size: 14px
+    background: transparent
+
+    option
+      font-size: 14px
+
+.disabled-style
+  background: #F8F9F9
+  pointer-events: none
+
+.over
+  background: #ffe4e4
+  border: 1px solid #ff5252
+  color: #b00000
+  font-weight: 600
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NEW — m- prefix: Mapping page two-column layout
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Status cell not in original
+.under
+  background: #fff7e0
+  border: 1px solid #f0a500
+  color: #7a5000
+  font-weight: 600
+
+// Section title / sub inside mapping (scoped, no conflict)
+.mSectionTitle
+  margin: 0 0 4px 0
+  font-size: 16px
+  font-weight: 700
+  color: #1A1A1A
+
+.mSectionSub
+  margin: 0
+  font-size: 12px
+  color: #6B7280
+  line-height: 1.5
+
+// Overflow row highlight
+.mRowOver
+  background: #fff5f5
+  border: 1px solid #fca5a5
+  border-radius: 5px
+
+// Overflow warning message
+.mOverflowWarn
+  margin-top: 8px
+  padding: 12px 16px
+  background: #fff5f5
+  border: 1px solid #fca5a5
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 500
+  color: #b00000
+  text-align: center
+
+.mPostSaveWarn
+  position: absolute
+  top: 82px
+  left: 40px
+  right: 40px
+  z-index: 10
+  padding: 10px 16px
+  background: #fff5f5
+  border: 1px solid #fca5a5
+  border-radius: 6px
+  font-size: 13px
+  color: #b00000
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 12px
+  animation: bWarnFadeIn 0.3s ease
+
+  button
+    flex-shrink: 0
+    padding: 6px 16px
+    background: #EA1212
+    color: white
+    border: none
+    border-radius: 4px
+    font-size: 12px
+    font-weight: 600
+    cursor: pointer
+
+    &:hover
+      background: #C00000
+
+// Item cell in mapping row
+.mItemCell
+  overflow: hidden
+  min-width: 0
+
+.mItemText
+  display: block
+  overflow: hidden
+  text-overflow: ellipsis
+  white-space: nowrap
+  font-size: 13px
+  color: #1A1A1A
+  line-height: 1.4
+
+.mItemEmpty
+  font-size: 12px
+  color: #bbb
+  font-style: italic
+
+// Span stepper cell in mapping rows (used in builder, not mapping table)
+.mSpanCell
+  display: flex
+  align-items: center
+  justify-content: center
+
+.mStepper
+  display: inline-flex
+  align-items: center
+  height: 36px
+  border: 1px solid #DDDFDF
+  border-radius: 6px
+  background: white
+  overflow: hidden
+  width: 100%
+  justify-content: center
+
+.mStepMinus
+  width: 30px
+  height: 36px
+  border: none
+  background: #F1F3F5
+  color: #374151
+  font-size: 16px
+  font-weight: 500
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: background 0.12s, color 0.12s
+
+  &:hover:not(:disabled)
+    background: #fee2e2
+    color: #b00000
+
+  &:disabled
+    opacity: 0.3
+    cursor: not-allowed
+
+.mStepPlus
+  width: 30px
+  height: 36px
+  border: none
+  background: #1A1A1A
+  color: #ffffff
+  font-size: 16px
+  font-weight: 500
+  cursor: pointer
+  display: flex
+  align-items: center
+  justify-content: center
+  transition: background 0.12s
+
+  &:hover:not(:disabled)
+    background: #EA1212
+
+  &:disabled
+    opacity: 0.3
+    cursor: not-allowed
+
+.mStepVal
+  min-width: 24px
+  text-align: center
+  font-size: 13px
+  font-weight: 700
+  color: #1A1A1A
+  user-select: none
+
+// Left-aligned header cell override
+.mThLeft
+  text-align: left
+  justify-content: flex-start
+
+// Mapping select — left-aligned text, custom arrow
+.mSelect
+  width: 100%
+  height: 36px
+  padding: 0 30px 0 10px
+  border: 1px solid #DDDFDF
+  border-radius: 6px
+  font-size: 13px
+  color: #1A1A1A
+  background-color: white
+  appearance: none
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%236B7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  background-position: right 10px center
+  box-sizing: border-box
+  cursor: pointer
+
+  &:focus
+    outline: none
+    border-color: #EA1212
+
+.mSelectDisabled
+  background-color: #F3F4F6
+  color: #9CA3AF
+  cursor: not-allowed
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E")
+
+.mSelectError
+  border-color: #EA1212 !important
+  background-color: #FFF4F4 !important
+
+// Mapping number input
+.mNum
+  width: 100%
+  height: 36px
+  padding: 0 8px
+  border: 1px solid #DDDFDF
+  border-radius: 6px
+  font-size: 13px
+  text-align: center
+  color: #1A1A1A
+  background: white
+  box-sizing: border-box
+  resize: none
+  overflow: hidden
+  line-height: 36px
+  font-family: inherit
+  vertical-align: middle
+
+  &:focus
+    outline: none
+    border-color: #EA1212
+
+// Mapping delete button
+.mDelBtn
+  width: 36px
+  height: 36px
+  display: flex
+  align-items: center
+  justify-content: center
+  background: #EA1212
+  border: none
+  border-radius: 6px
+  cursor: pointer
+  color: white
+  transition: background 0.12s
+  padding: 0
+
+  svg
+    display: block
+
+  &:hover
+    background: #C00000
+
+// Two-column outer wrapper
+.mOuter
+  display: flex
+  flex-direction: row
+  align-items: stretch
+  gap: 20px
+  width: 100%
+  max-height: calc(100vh - 100px)
+
+.mScrollArea
+  flex: 1
+  min-width: 0
+  overflow-y: auto
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NEW — t- prefix: Tracker Panel (right side, full-height)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+.tPanel
+  width: 240px
+  min-width: 240px
+  flex-shrink: 0
+  position: sticky
+  top: 0
+  align-self: stretch
+  background: white
+  border: 1px solid #DDDFDF
+  border-radius: 10px
+  overflow: hidden
+  display: flex
+  flex-direction: column
+
+.tHeader
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 14px 16px 12px 16px
+  border-bottom: 1px solid #F1F3F5
+
+.tTitle
+  font-size: 11px
+  font-weight: 700
+  letter-spacing: 0.07em
+  text-transform: uppercase
+  color: #6B7280
+
+.tTotalPill
+  font-size: 12px
+  font-weight: 700
+  padding: 3px 10px
+  border-radius: 20px
+  border: 1.5px solid transparent
+
+.tTotalOk
+  background: #f0fdf4
+  border-color: #86efac
+  color: #166534
+
+.tTotalOver
+  background: #fff0f0
+  border-color: #fca5a5
+  color: #b00000
+
+.tTotalUnder
+  background: #fffbeb
+  border-color: #fbbf24
+  color: #7a5000
+
+.tBody
+  padding: 16px 16px 16px 16px
+  display: flex
+  flex-direction: column
+  gap: 20px
+  overflow-y: auto
+  flex: 1
+
+.tCoBlock
+  display: flex
+  flex-direction: column
+  gap: 10px
+  padding: 12px
+  background: #F9FAFB
+  border-radius: 8px
+
+.tCoTitle
+  font-size: 13px
+  font-weight: 700
+  color: #1A1A1A
+  letter-spacing: 0.02em
+  padding-bottom: 8px
+  border-bottom: 2px solid #EA1212
+
+.tIloRow
+  display: flex
+  align-items: center
+  gap: 10px
+  min-height: 30px
+
+.tIloId
+  font-size: 12px
+  font-weight: 700
+  color: #374151
+  width: 38px
+  flex-shrink: 0
+
+.tBarTrack
+  flex: 1
+  height: 10px
+  background: #E5E7EB
+  border-radius: 5px
+  overflow: hidden
+
+.tBarFill
+  height: 100%
+  border-radius: 3px
+  transition: width 0.3s ease
+
+.tFillOk
+  background: #22c55e
+
+.tFillOver
+  background: #EA1212
+
+.tFillUnder
+  background: #fbbf24
+
+.tIloCount
+  font-size: 12px
+  font-weight: 700
+  color: #374151
+  width: 36px
+  text-align: right
+  flex-shrink: 0
+
+.tCountOk
+  color: #166534
+
+.tCountOver
+  color: #b00000
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NEW — b- prefix: Assessment Builder
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Full-page builder — flex column; bBar is a normal child, bScroll fills remaining height
+.bPage
+  width: 100%
+  height: 100%
+  min-height: 0
+  overflow: hidden
+  background: #F9FAFB
+  display: flex
+  flex-direction: column
+
+// Empty items warning bar — fades in, auto-dismisses
+.bEmptyWarn
+  padding: 10px 20px
+  background: #FFF4F4
+  border-bottom: 1px solid #fca5a5
+  color: #b00000
+  font-size: 13px
+  font-weight: 500
+  text-align: center
+  animation: bWarnFadeIn 0.3s ease
+
+@keyframes bWarnFadeIn
+  from
+    opacity: 0
+    transform: translateY(-8px)
+  to
+    opacity: 1
+    transform: translateY(0)
+
+// Scrollable area below the fixed bar
+.bScroll
+  flex: 1
+  overflow-y: auto
+  overflow-x: hidden
+
+// Progress bar in nav
+.bProgressTrack
+  width: 200px
+  height: 10px
+  background: #E5E7EB
+  border-radius: 5px
+  overflow: hidden
+
+.bProgressFill
+  height: 100%
+  background: #1A1A1A
+  border-radius: 5px
+  transition: width 0.3s ease
+
+// ── Top bar — outside the scroll container, always visible ──────────────────
+.bBar
+  z-index: 100
+  background: white
+  border-bottom: 2px solid #DDDFDF
+  padding: 12px 32px
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 16px
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07)
+  flex-shrink: 0
+
+.bBarCenter
+  display: flex
+  align-items: center
+  gap: 10px
+  flex: 1
+  justify-content: center
+
+.bBarTitle
+  font-size: 15px
+  font-weight: 700
+  color: #1A1A1A
+
+// Status pill in top bar
+.bStatusPill
+  font-size: 12px
+  font-weight: 700
+  padding: 3px 12px
+  border-radius: 20px
+  border: 1.5px solid transparent
+
+.bStatusOk
+  background: #f0fdf4
+  border-color: #86efac
+  color: #166534
+
+.bStatusOver
+  background: #fff0f0
+  border-color: #fca5a5
+  color: #b00000
+
+.bStatusUnder
+  background: #fffbeb
+  border-color: #fbbf24
+  color: #7a5000
+
+// ── Top bar buttons ───────────────────────────────────────────────────────────
+
+.bBtnSave
+  display: inline-flex
+  align-items: center
+  gap: 7px
+  height: 40px
+  padding: 0 22px
+  background: #1A1A1A
+  color: #ffffff
+  border: none
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 600
+  cursor: pointer
+  white-space: nowrap
+  flex-shrink: 0
+  transition: background 0.15s, opacity 0.15s
+
+  &:hover:not(:disabled)
+    background: #EA1212
+
+  &:disabled
+    background: #9CA3AF
+    color: #ffffff
+    cursor: not-allowed
+    opacity: 0.7
+
+.bBtnExport
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  height: 40px
+  padding: 0 20px
+  background: #EA1212
+  color: #ffffff
+  border: none
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 500
+  cursor: pointer
+  white-space: nowrap
+  flex-shrink: 0
+  transition: background 0.15s
+
+  &:hover
+    background: #C00000
+
+// ── Warning modal ─────────────────────────────────────────────────────────────
+.bWarnOverlay
+  position: fixed
+  inset: 0
+  background: rgba(0,0,0,0.45)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 200
+
+.bWarnBox
+  background: white
+  border-radius: 12px
+  padding: 28px 32px
+  max-width: 380px
+  width: 90%
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18)
+
+.bWarnTitle
+  font-size: 16px
+  font-weight: 700
+  color: #1A1A1A
+  margin: 0 0 8px 0
+
+.bWarnBody
+  font-size: 13px
+  color: #6B7280
+  line-height: 1.6
+  margin: 0 0 20px 0
+
+.bWarnActions
+  display: flex
+  gap: 10px
+  justify-content: flex-end
+
+.bWarnCancel
+  height: 38px
+  padding: 0 20px
+  background: white
+  color: #374151
+  border: 1.5px solid #DDDFDF
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 500
+  cursor: pointer
+  transition: all 0.12s
+
+  &:hover
+    border-color: #374151
+
+.bWarnConfirm
+  height: 38px
+  padding: 0 20px
+  background: #EA1212
+  color: #ffffff
+  border: none
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 600
+  cursor: pointer
+  transition: background 0.15s
+
+  &:hover
+    background: #C00000
+
+// ── Scrollable item list ──────────────────────────────────────────────────────
+.bList
+  padding: 20px 32px 48px 32px
+  display: flex
+  flex-direction: column
+  gap: 12px
+
+// ── Item wrapper (card + optional delete button) ──────────────────────────────
+.bItemWrap
+  display: flex
+  align-items: stretch
+  gap: 0
+  transition: opacity 0.3s ease, transform 0.3s ease, max-height 0.3s ease
+  max-height: 2000px
+  opacity: 1
+
+.bItemDeleting
+  opacity: 0
+  transform: translateX(-20px)
+  max-height: 0
+  overflow: hidden
+  margin: 0
+  padding: 0
+
+.bItemDel
+  width: 36px
+  display: flex
+  align-items: center
+  justify-content: center
+  background: #EA1212
+  border: none
+  border-radius: 0 10px 10px 0
+  cursor: pointer
+  color: white
+  flex-shrink: 0
+  padding: 0
+  transition: background 0.12s
+  align-self: stretch
+
+  svg
+    display: block
+
+  &:hover
+    background: #C00000
+
+// ── Item card ─────────────────────────────────────────────────────────────────
+.bCard
+  flex: 1
+  min-width: 0
+  border: 1px solid #DDDFDF
+  border-radius: 10px
+  background: white
+  overflow: hidden
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06)
+  transition: box-shadow 0.15s
+
+  &:hover
+    box-shadow: 0 3px 10px rgba(0,0,0,0.09)
+
+// Card with delete button attached — flatten right side
+.bCardDelMode
+  border-radius: 10px 0 0 10px
+  border-right: none
+
+.bCardIncomplete
+  border-color: #EA1212 !important
+  box-shadow: 0 0 0 1px #EA1212
+
+// Card header
+.bCardHead
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding: 10px 16px
+  background: #F9FAFB
+  border-bottom: 1px solid #DDDFDF
+  gap: 12px
+
+.bCardHeadLeft
+  display: flex
+  align-items: center
+  gap: 10px
+  min-width: 0
+  flex: 1
+
+.bCardHeadRight
+  display: flex
+  align-items: center
+  gap: 8px
+  flex-shrink: 0
+
+// Item range label — PROMINENT: "Item 1" or "Item 1 – 5"
+.bItemRangeLabel
+  font-size: 15px
+  font-weight: 700
+  color: #1A1A1A
+  white-space: nowrap
+
+// Inline points in card header
+.bPtsInline
+  display: flex
+  align-items: center
+  gap: 4px
+  align-self: center
+
+.bPtsInlineLabel
+  font-size: 11px
+  font-weight: 600
+  color: #6B7280
+
+.bPtsInlineInput
+  width: 52px
+  height: 34px
+  padding: 0 6px
+  border: 2px solid #1A1A1A
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 700
+  text-align: center
+  color: #1A1A1A
+  background: white
+  box-sizing: border-box
+  resize: none
+  overflow: hidden
+  line-height: 34px
+  font-family: inherit
+  vertical-align: middle
+
+  &:focus
+    outline: none
+    border-color: #EA1212
+
+// Span edit mode row
+.bSpanEditRow
+  display: flex
+  align-items: center
+  gap: 6px
+
+.bSpanEditHint
+  font-size: 12px
+  font-weight: 500
+  color: #6B7280
+  white-space: nowrap
+
+.bSpanInput
+  width: 56px
+  height: 32px
+  padding: 0 6px
+  border: 2px solid #EA1212
+  border-radius: 6px
+  font-size: 13px
+  font-weight: 700
+  text-align: center
+  color: #1A1A1A
+  background: white
+  box-sizing: border-box
+  resize: none
+  overflow: hidden
+  line-height: 32px
+  font-family: inherit
+  vertical-align: middle
+
+  &:focus
+    outline: none
+
+// Confirm span button
+.bBtnConfirm
+  width: 32px
+  height: 32px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  background: #16a34a
+  color: #ffffff
+  border: none
+  border-radius: 6px
+  cursor: pointer
+  transition: background 0.12s
+  padding: 0
+
+  svg
+    display: block
+
+  &:hover
+    background: #15803d
+
+// Cancel span button
+.bBtnCancelSpan
+  width: 32px
+  height: 32px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  background: #F1F3F5
+  color: #374151
+  border: 1.5px solid #DDDFDF
+  border-radius: 6px
+  cursor: pointer
+  transition: all 0.12s
+  padding: 0
+
+  svg
+    display: block
+
+  &:hover
+    background: #DDDFDF
+
+// Edit span button — small, subtle icon
+.bBtnEditSpan
+  width: 24px
+  height: 24px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  background: transparent
+  color: #9CA3AF
+  border: none
+  border-radius: 4px
+  cursor: pointer
+  transition: all 0.12s
+  padding: 0
+
+  svg
+    display: block
+
+  &:hover
+    background: #F1F3F5
+    color: #374151
+
+// Clear button — light red tint so it is distinctly different from the points input
+.bBtnClear
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  height: 34px
+  padding: 0 14px
+  background: #fee2e2
+  color: #b00000
+  border: 1.5px solid #fca5a5
+  border-radius: 6px
+  font-size: 12px
+  font-weight: 600
+  cursor: pointer
+  white-space: nowrap
+  transition: all 0.12s
+
+  &:hover:not(:disabled)
+    background: #EA1212
+    color: white
+    border-color: #EA1212
+
+  &:disabled
+    opacity: 0.3
+    cursor: not-allowed
+
+// ── Card body ─────────────────────────────────────────────────────────────────
+.bCardBody
+  padding: 16px
+  display: flex
+  flex-direction: column
+  gap: 12px
+
+// Instruction textarea
+.bInstruction
+  width: 100%
+  padding: 10px 12px
+  border: 1.5px solid #DDDFDF
+  border-radius: 6px
+  font-size: 14px
+  font-family: inherit
+  resize: none
+  background: white
+  line-height: 1.5
+  box-sizing: border-box
+  transition: border-color 0.15s
+  overflow: hidden
+  min-height: 44px
+
+  &:focus
+    outline: none
+    border-color: #EA1212
+
+// Group label (Choices / Rubric)
+.bGroupLabel
+  font-size: 11px
+  font-weight: 700
+  letter-spacing: 0.06em
+  text-transform: uppercase
+  color: #6B7280
+
+// ── Choices ───────────────────────────────────────────────────────────────────
+.bChoicesWrap
+  display: flex
+  flex-direction: column
+  gap: 7px
+  padding: 12px
+  background: #F9FAFB
+  border: 1px solid #DDDFDF
+  border-radius: 6px
+
+.bChoiceRow
+  display: flex
+  align-items: center
+  gap: 8px
+
+.bChoiceLetter
+  font-size: 13px
+  font-weight: 700
+  color: #EA1212
+  width: 20px
+  text-align: center
+  flex-shrink: 0
+
+.bChoiceInput
+  flex: 1
+  height: 34px
+  padding: 0 10px
+  border: 1.5px solid #DDDFDF
+  border-radius: 5px
+  font-size: 13px
+  background: white
+  font-family: inherit
+  min-width: 0
+  transition: border-color 0.15s
+
+  &:focus
+    outline: none
+    border-color: #EA1212
+
+// Generic icon remove button
+.bIconRemove
+  width: 28px
+  height: 28px
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  border: 1.5px solid #fca5a5
+  background: #fee2e2
+  color: #b00000
+  border-radius: 5px
+  cursor: pointer
+  flex-shrink: 0
+  transition: all 0.1s
+
+  &:hover
+    background: #EA1212
+    color: #ffffff
+    border-color: #EA1212
+
+// Link-style "add another" button
+.bLinkBtn
+  display: inline-flex
+  align-items: center
+  gap: 4px
+  padding: 6px 12px
+  background: transparent
+  border: 1.5px solid #EA1212
+  border-radius: 20px
+  color: #EA1212
+  font-size: 12px
+  font-weight: 600
+  cursor: pointer
+  margin-top: 2px
+  transition: all 0.15s
+
+  &:hover
+    background: #fee2e2
+    border-color: #EA1212
+
+  &:focus
+    outline: none
+    border-color: #1A1A1A
+
+// ── Rubric ────────────────────────────────────────────────────────────────────
+.bRubricWrap
+  display: flex
+  flex-direction: column
+  gap: 7px
+  padding: 12px
+  background: #fffdf2
+  border: 1.5px dashed #d4af00
+  border-radius: 6px
+
+.bRubricHead
+  display: flex
+  align-items: center
+  justify-content: flex-start
+
+.bWeightPill
+  font-size: 11px
+  font-weight: 700
+  padding: 2px 8px
+  border-radius: 20px
+
+.bWeightOk
+  background: #f0fdf4
+  color: #166534
+
+.bWeightOver
+  background: #fff0f0
+  color: #b00000
+
+.bWeightUnder
+  background: #fffbeb
+  color: #7a5000
+
+// Rubric column header row — grid for perfect alignment with data rows
+.bRubricCols
+  display: grid
+  grid-template-columns: 250px 1fr 70px 44px 28px
+  gap: 6px
+  padding-bottom: 6px
+  border-bottom: 1px solid #e8d94e
+  font-size: 10px
+  font-weight: 700
+  letter-spacing: 0.05em
+  text-transform: uppercase
+  color: #7a6200
+
+// Total weight row below rubric criteria
+.bRubricTotalRow
+  display: grid
+  grid-template-columns: 250px 1fr 70px 44px 28px
+  gap: 6px
+  align-items: center
+  padding-top: 8px
+  border-top: 1px dashed #d4af00
+
+  .bWeightPill
+    font-size: 10px
+    font-weight: 700
+    padding: 2px 8px
+    border-radius: 12px
+    display: block
+    margin: 0 auto
+    text-align: center
+    width: fit-content
+
+.bRubricPtsTotal
+  font-size: 11px
+  font-weight: 700
+  color: #7a6200
+  background: #fff9e0
+  border-radius: 4px
+  padding: 2px 6px
+  text-align: center
+  min-width: 30px
+  justify-self: center
+
+.bRhLeft
+  text-align: left
+
+.bRhCenter
+  text-align: center
+
+// Rubric data row — same grid template
+.bRubricRow
+  display: grid
+  grid-template-columns: 250px 1fr 70px 44px 28px
+  gap: 6px
+  align-items: stretch
+
+.bRubricName
+  width: 100%
+  min-height: 30px
+  padding: 4px 8px
+  border: 1.5px solid #DDDFDF
+  border-radius: 5px
+  font-size: 12px
+  font-family: inherit
+  background: white
+  box-sizing: border-box
+  resize: none
+  overflow: hidden
+  line-height: 1.4
+
+  &:focus
+    outline: none
+    border-color: #d4af00
+
+.bRubricDesc
+  width: 100%
+  min-height: 30px
+  padding: 4px 8px
+  border: 1.5px solid #DDDFDF
+  border-radius: 5px
+  font-size: 12px
+  font-family: inherit
+  background: white
+  box-sizing: border-box
+  resize: none
+  overflow: hidden
+  line-height: 1.4
+
+  &:focus
+    outline: none
+    border-color: #d4af00
+
+.bRubricWeightWrap
+  display: flex
+  align-items: center
+  justify-content: center
+  min-height: 30px
+  border: 1.5px solid #DDDFDF
+  border-radius: 5px
+  background: white
+  overflow: hidden
+  transition: border-color 0.12s
+  box-sizing: border-box
+
+.bRubricWeightIn
+  flex: 1
+  border: none
+  padding: 0 6px
+  font-size: 12px
+  font-family: inherit
+  text-align: center
+  background: transparent
+  min-width: 0
+  resize: none
+  overflow: hidden
+  line-height: 22px
+  min-height: 22px
+  box-sizing: border-box
+  vertical-align: middle
+
+  &:focus
+    outline: none
+
+.bRubricPctLabel
+  padding: 0 7px 0 2px
+  font-size: 11px
+  color: #6B7280
+  flex-shrink: 0
+
+.bRubricPts
+  min-height: 30px
+  display: flex
+  align-items: center
+  justify-content: center
+  font-size: 12px
+  font-weight: 600
+  color: #7a6200
+  background: #fff9e0
+  border-radius: 4px
+  text-align: center
+  padding: 4px 2px
+  box-sizing: border-box
+
+// Generic icon remove button
+.bIconRemove
+  width: 28px
+  display: flex
+  align-items: center
+  justify-content: center
+  border: 1.5px solid #fca5a5
+  background: #fee2e2
+  color: #b00000
+  border-radius: 5px
+  cursor: pointer
+  flex-shrink: 0
+  transition: all 0.1s
+  padding: 0
+  align-self: stretch
+
+  svg
+    display: block
+
+  &:hover
+    background: #EA1212
+    color: #ffffff
+    border-color: #EA1212
+
+// ── Action bar ────────────────────────────────────────────────────────────────
+.bActionBar
+  display: flex
+  align-items: center
+  justify-content: space-between
+  padding-top: 8px
+  border-top: 1px solid #F1F3F5
+  margin-top: 2px
+  gap: 10px
+
+.bActionLeft
+  display: flex
+  align-items: center
+  gap: 6px
+
+.bActionRight
+  display: flex
+  align-items: center
+  gap: 6px
+
+// Add Choices — dark bg, white text
+.bBtnAddChoices
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  height: 34px
+  padding: 0 16px
+  background: #1A1A1A
+  color: #ffffff
+  border: none
+  border-radius: 20px
+  font-size: 12px
+  font-weight: 500
+  cursor: pointer
+  white-space: nowrap
+  transition: all 0.12s
+
+  &:hover
+    background: #EA1212
+
+// Add Rubric — red bg, white text
+.bBtnAddRubric
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  height: 34px
+  padding: 0 16px
+  background: #EA1212
+  color: #ffffff
+  border: none
+  border-radius: 20px
+  font-size: 12px
+  font-weight: 500
+  cursor: pointer
+  white-space: nowrap
+  transition: all 0.12s
+
+  &:hover
+    background: #C00000
+
+// Toggle rubric — light red bg, dark red text
+.bBtnToggleRubric
+  display: inline-flex
+  align-items: center
+  gap: 6px
+  height: 34px
+  padding: 0 16px
+  background: #fee2e2
+  color: #b00000
+  border: 1.5px solid #fca5a5
+  border-radius: 20px
+  font-size: 12px
+  font-weight: 500
+  cursor: pointer
+  white-space: nowrap
+  transition: all 0.12s
+
+  &:hover
+    background: #EA1212
+    color: white
+    border-color: #EA1212
+
+// Scroll-to-top button (lower-right corner of builder)
+.bScrollTop
+  position: fixed
+  bottom: 24px
+  right: 24px
+  width: 44px
+  height: 44px
+  border-radius: 50%
+  border: none
+  background: #1A1A1A
+  color: white
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+  z-index: 100
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2)
+  transition: background 0.12s
+
+  &:hover
+    background: #EA1212
