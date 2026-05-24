@@ -13,6 +13,7 @@ import academicPeriodsRouter from './routes/academicPeriods.js';
 import adminCoursesRouter from './routes/adminCourses.js';
 import assignmentsRouter from './routes/assignments.js';
 import instructorsRouter from './routes/instructors.js';
+import myCoursesRouter from './routes/myCourses.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -25,6 +26,7 @@ app.use('/api/admin/academic-periods', academicPeriodsRouter);
 app.use('/api/admin/courses', adminCoursesRouter);
 app.use('/api/admin/assignments', assignmentsRouter);
 app.use('/api/admin/instructors', instructorsRouter);
+app.use('/api/my-courses', myCoursesRouter);
 app.use('/api/courses', coursesRouter);
 app.use('/api/courses', outcomesRouter);
 app.use('/api/courses', itemsRouter);

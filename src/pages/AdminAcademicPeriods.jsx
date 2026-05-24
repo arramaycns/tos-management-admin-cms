@@ -1,10 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useAuth } from '../context/AuthContext';
 import styles from '../styles/AdminPage.module.sass';
-import { Plus, Check, X } from 'react-feather';
+import { Plus, Edit3, CheckCircle, XCircle } from 'react-feather';
 
 export default function AdminAcademicPeriods() {
-    const { user } = useAuth();
     const [periods, setPeriods] = useState([]);
     const [showForm, setShowForm] = useState(false);
     const [editing, setEditing] = useState(null);
@@ -17,6 +15,8 @@ export default function AdminAcademicPeriods() {
         .then(r => r.json()).then(setPeriods);
 
     useEffect(() => { load(); }, []);
+
+    const getPeriodName = (p) => `${p.academicYear} | ${p.semester} | ${p.examType}`;
 
     const handleSave = async () => {
         if (!form.academicYear.trim()) return;
@@ -38,7 +38,7 @@ export default function AdminAcademicPeriods() {
     const toggleActive = async (p) => {
         await fetch(`/api/admin/academic-periods/${p.id}`, {
             method: 'PUT', headers,
-            body: JSON.stringify({ ...p, isActive: !p.isActive })
+            body: JSON.stringify({ academicYear: p.academicYear, semester: p.semester, examType: p.examType, isActive: !p.isActive })
         });
         load();
     };
@@ -86,6 +86,7 @@ export default function AdminAcademicPeriods() {
                 <table>
                     <thead>
                         <tr>
+                            <th>Period Name</th>
                             <th>Academic Year</th>
                             <th>Semester</th>
                             <th>Exam Type</th>
@@ -96,6 +97,7 @@ export default function AdminAcademicPeriods() {
                     <tbody>
                         {periods.map(p => (
                             <tr key={p.id}>
+                                <td><strong>{getPeriodName(p)}</strong></td>
                                 <td>{p.academicYear}</td>
                                 <td>{p.semester}</td>
                                 <td>{p.examType}</td>
@@ -107,17 +109,17 @@ export default function AdminAcademicPeriods() {
                                 <td>
                                     <div className={styles.actionBtns}>
                                         <button className={styles.iconBtn} onClick={() => handleEdit(p)} title="Edit">
-                                            <Check size={16} />
+                                            <Edit3 size={16} />
                                         </button>
                                         <button className={`${styles.iconBtn} ${p.isActive ? styles.warnBtn : styles.neutralBtn}`} onClick={() => toggleActive(p)} title={p.isActive ? 'Deactivate' : 'Set Active'}>
-                                            {p.isActive ? <X size={16} /> : <Check size={16} />}
+                                            {p.isActive ? <XCircle size={16} /> : <CheckCircle size={16} />}
                                         </button>
                                     </div>
                                 </td>
                             </tr>
                         ))}
                         {periods.length === 0 && (
-                            <tr><td colSpan={5} style={{ textAlign: 'center', padding: 30, color: '#999' }}>No academic periods yet. Create one to get started.</td></tr>
+                            <tr><td colSpan={6} style={{ textAlign: 'center', padding: 30, color: '#999' }}>No academic periods yet. Create one to get started.</td></tr>
                         )}
                     </tbody>
                 </table>

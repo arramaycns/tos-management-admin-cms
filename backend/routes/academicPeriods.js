@@ -4,6 +4,11 @@ import { authenticateToken, requireRole } from '../middleware/auth.js';
 
 const router = Router();
 
+router.get('/active', authenticateToken, async (req, res) => {
+    const active = await AcademicPeriod.findOne({ where: { isActive: true } });
+    res.json(active);
+});
+
 router.use(authenticateToken, requireRole('admin'));
 
 router.get('/', async (req, res) => {

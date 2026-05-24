@@ -1,4 +1,5 @@
 const BASE = '/api/courses';
+const MY_COURSES = '/api/my-courses';
 
 const cogLevelMap = {
     toBackend: {
@@ -23,7 +24,9 @@ export function cogToBackend(val) { return cogLevelMap.toBackend[val] || val; }
 export function cogToFrontend(val) { return cogLevelMap.toFrontend[val] || val; }
 
 export async function fetchCourses() {
-    const res = await fetch(BASE);
+    const token = localStorage.getItem('token');
+    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+    const res = await fetch(MY_COURSES, { headers });
     const data = await res.json();
     return data.map(c => ({
         code: c.code,

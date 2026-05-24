@@ -3,16 +3,10 @@ import {Link, useLocation} from 'react-router-dom'
 import styles from '../styles/CoursesTable.module.sass';
 import { ChevronRight } from 'react-feather';
 import { fetchCourses } from '../services/api.js';
-const TOSCoursesTable = ({}) => {
 
-    const currentYear = new Date().getFullYear();
-    const startYear = 2000;
-    const semOptions = ['1st Sem', '2nd Sem'];
-    const temp = ['Midterm', 'Finals'];
-    const yearOptions = [];
-    for (let i = currentYear; i >= startYear; i--) {
-        yearOptions.push(<option key={i} value={i}>{i}</option>);
-    }
+const TOSCoursesTable = ({}) => {
+    const [activePeriod, setActivePeriod] = useState(null);
+    const [courses, setCourses] = useState([]);
     const fallbackCourses = [
         { code: 'BSCS313L', name: 'Human & Computer Interaction', update: 'Sept 01, 2025', status: 'draft',    exported: '' },
         { code: 'BSCS212L', name: 'Web Development I',            update: 'Aug 15, 2025', status: 'draft',    exported: '' },
@@ -25,7 +19,16 @@ const TOSCoursesTable = ({}) => {
         { code: 'BSCS341L', name: 'Artificial Intelligence',       update: 'Sept 01, 2025', status: 'draft',    exported: '' },
         { code: 'BSCS351L', name: 'Cybersecurity Fundamentals',    update: 'Sept 10, 2025', status: 'pending', exported: '' },
     ];
-    const [courses, setCourses] = useState(fallbackCourses);
+
+    const token = localStorage.getItem('token');
+    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
+
+    useEffect(() => {
+        fetch('/api/admin/academic-periods/active', { headers })
+            .then(r => r.ok ? r.json() : null)
+            .then(data => setActivePeriod(data))
+            .catch(() => {});
+    }, []);
 
     useEffect(() => {
         fetchCourses()
@@ -49,24 +52,20 @@ const TOSCoursesTable = ({}) => {
         setSelectedStatus(e.target.value)
     }
 
+    const periodLabel = activePeriod
+        ? `${activePeriod.academicYear} | ${activePeriod.semester} | ${activePeriod.examType}`
+        : null;
+
     return (
         <div className={styles['courses-table']}>
-
             <div className={styles.header}>
-                <h2>ASSIGNED TOS</h2>
-                <div className={styles.filterA}>
-                    <select className={styles['header-select']}>
-                        {yearOptions}
-                    </select>
-                    <select className={styles['header-select']}>
-                        {semOptions.map(sem => (
-                            <option key={sem} value={sem}>{sem}</option>
-                        ))}
-                    </select>
-                    <select className={styles['header-select']}>
-                        <option key="Midterm" value="Midterm">Midterm</option>
-                        <option key="Finals" value="Finals" disabled>Finals</option>
-                    </select>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                    <h2 style={{ margin: 0 }}>ASSIGNED TOS</h2>
+                    {periodLabel && (
+                        <span style={{ fontSize: 13, color: '#6B7280', fontWeight: 400 }}>
+                            {periodLabel}
+                        </span>
+                    )}
                 </div>
                 <div className={styles.fill}></div>
 
@@ -74,8 +73,8 @@ const TOSCoursesTable = ({}) => {
                     <p>Filter by <strong>Status</strong>:</p>
                     <select onChange={handleStatusChange} >
                         <option value="draft">Draft</option>
-                        <option value="pending" disabled>Pending</option>
-                        <option value="approved" disabled>Approved</option>
+                        <option value="pending">Pending</option>
+                        <option value="approved">Approved</option>
                     </select>
                 </div>
             </div>
