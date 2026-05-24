@@ -4,37 +4,37 @@ The Table of Specifications (TOS) Composition Module with Admin Content Manageme
 
 The system is divided into two primary components:
 
-The Admin CMS: A centralized control center for managing institutional data, course catalogs, and faculty assignments.
+- The Admin CMS: A centralized control center for managing institutional data, course catalogs, and faculty assignments.
 
-The TOS Composition Interface: An intelligent workspace for instructors that automates mathematical calculations and ensures alignment with approved curriculum standards.
+- The TOS Composition Interface: An intelligent workspace for instructors that automates mathematical calculations and ensures alignment with approved curriculum standards.
 
 # Tech Stack
 Frontend
-Framework: React.js (built with Vite)
+- Framework: React.js (built with Vite)
+  
+- Styling: CSS3 / Sass
+  
+- HTTP Client: Axios
 
-Styling: CSS3 / Sass
-
-HTTP Client: Axios
-
-State Management: Client-side state handling and routing
+- State Management: Client-side state handling and routing
 
 Backend and Database
-Runtime: Node.js
+- Runtime: Node.js
 
-Server Framework: Express.js
+- Server Framework: Express.js
 
-Database: MySQL 8.0
+- Database: MySQL 8.0
 
-ORM: Sequelize
+- ORM: Sequelize
 
-Containerization: Docker and Adminer (for database management)
+- Containerization: Docker and Adminer (for database management)
 
 Design and Tools
-Design: Figma
+- Design: Figma
 
-Version Control: GitHub
+- Version Control: GitHub
 
-Development Environment: Webstorm / VS Code
+- Development Environment: Webstorm / VS Code
 
 Key Features
 1. Admin Content Management System
