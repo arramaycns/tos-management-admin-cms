@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { CourseOutcome, IloItem } from '../models/index.js';
+import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
+
+router.use(authenticateToken);
 
 router.get('/:code/outcomes', async (req, res) => {
     const outcomes = await CourseOutcome.findAll({

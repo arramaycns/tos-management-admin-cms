@@ -1,6 +1,13 @@
 const BASE = '/api/courses';
 const MY_COURSES = '/api/my-courses';
 
+const authHeaders = () => {
+    const token = localStorage.getItem('token');
+    const h = { 'Content-Type': 'application/json' };
+    if (token) h['Authorization'] = `Bearer ${token}`;
+    return h;
+};
+
 const cogLevelMap = {
     toBackend: {
         'Remembering': 'Remember',
@@ -24,9 +31,7 @@ export function cogToBackend(val) { return cogLevelMap.toBackend[val] || val; }
 export function cogToFrontend(val) { return cogLevelMap.toFrontend[val] || val; }
 
 export async function fetchCourses() {
-    const token = localStorage.getItem('token');
-    const headers = token ? { 'Authorization': `Bearer ${token}` } : {};
-    const res = await fetch(MY_COURSES, { headers });
+    const res = await fetch(MY_COURSES, { headers: authHeaders() });
     const data = await res.json();
     return data.map(c => ({
         code: c.code,
@@ -38,7 +43,7 @@ export async function fetchCourses() {
 }
 
 export async function fetchOutcomes(courseCode) {
-    const res = await fetch(`${BASE}/${courseCode}/outcomes`);
+    const res = await fetch(`${BASE}/${courseCode}/outcomes`, { headers: authHeaders() });
     if (!res.ok) return [];
     return await res.json();
 }
@@ -46,14 +51,14 @@ export async function fetchOutcomes(courseCode) {
 export async function saveOutcomes(courseCode, outcomes) {
     const res = await fetch(`${BASE}/${courseCode}/outcomes`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify(outcomes)
     });
     return await res.json();
 }
 
 export async function fetchItems(courseCode) {
-    const res = await fetch(`${BASE}/${courseCode}/items`);
+    const res = await fetch(`${BASE}/${courseCode}/items`, { headers: authHeaders() });
     if (!res.ok) return [];
     const data = await res.json();
     return data.map(item => ({
@@ -105,21 +110,21 @@ export async function saveItems(courseCode, items) {
     }));
     const res = await fetch(`${BASE}/${courseCode}/items`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify(body)
     });
     return await res.json();
 }
 
 export async function fetchStatus(courseCode) {
-    const res = await fetch(`${BASE}/${courseCode}/status`);
+    const res = await fetch(`${BASE}/${courseCode}/status`, { headers: authHeaders() });
     return await res.json();
 }
 
 export async function updateStatus(courseCode, status) {
     const res = await fetch(`${BASE}/${courseCode}/status`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders(),
         body: JSON.stringify({ status })
     });
     return await res.json();

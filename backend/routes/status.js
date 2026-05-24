@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { TosStatus } from '../models/index.js';
+import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
+
+router.use(authenticateToken);
 
 router.get('/:code/status', async (req, res) => {
     let status = await TosStatus.findOne({

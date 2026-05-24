@@ -1,7 +1,10 @@
 import { Router } from 'express';
 import { AssessmentItem, ItemChoice, ItemRubric } from '../models/index.js';
+import { authenticateToken } from '../middleware/auth.js';
 
 const router = Router();
+
+router.use(authenticateToken);
 
 router.get('/:code/items', async (req, res) => {
     const items = await AssessmentItem.findAll({
