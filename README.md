@@ -1,97 +1,83 @@
-# TOS Management with Admin CMS
+LPMS: TOS Composition & Admin CMS
+📌 Project Description
+A core sub-module of the Learning Plan Management System (LPMS) for the University of Nueva Caceres (UNC). This system transforms the manual preparation of Tables of Specifications (TOS) into a structured, automated digital workflow. It consists of two synergistic components:
 
-## Project Description
+Admin CMS: A centralized control center for managing academic periods, course catalogs, and faculty assignments.
 
-A web-based system for managing Table of Specifications (TOS) and course administration, designed for the undergraduate programs of the University of Nueva Caceres (UNC).
+TOS Composition Module: An intelligent workspace for instructors to map assessment items to Course Outcomes (COs) and Intended Learning Outcomes (ILOs) with automated mathematical calculations.
 
----
+🛠 Tech Stack
+Frontend
+Framework: React.js (via Vite)
 
-## Tech Stack
+State Management: Client-side state handling
 
-### Frontend
-- React.js
-- Vite
-- HTML5
-- CSS3
-- JavaScript
+Styling: CSS3 / Sass
 
-### Tools & Platforms
-- GitHub
-- Webstorm
-- Figma
+HTTP Client: Axios (for REST API communication)
 
----
+Backend & Database
+Runtime: Node.js
 
-## Installation Guide
+Server Framework: Express.js
 
-Follow these steps to set up the project locally:
+Database: MySQL 8.0
 
-### 1. Clone the Repository
+ORM: Sequelize (Object-Relational Mapper)
 
-```bash
+Tooling: Docker & Adminer (Containerization and DB management)
+
+Design & Productivity
+Design: Figma
+
+IDE: Webstorm / VS Code
+
+Version Control: GitHub
+
+Key Features
+1. Admin Content Management
+Academic Periods: Manage and activate specific terms (e.g., 2024–2025 Midterms).
+
+Course Catalog: Maintain a searchable database of all university courses.
+
+CO/ILO Templates: Encode and map curriculum standards (Outcomes) to courses.
+
+Course Assignments: Link instructors to specific course offerings per period.
+
+2. Instructor TOS Workspace
+Outcome Overview: Auto-populated, read-only view of approved COs and ILOs.
+
+Item Mapping: Dynamic interface to add questions, tag cognitive levels (Bloom’s Taxonomy), and assign points.
+
+Automated Calculations: Real-time computation of percentage weights and point distributions.
+
+TOS Preview: Formatted, read-only validation view before final submission.
+
+Installation Guide
+1. Clone the Repository
+Bash
 git clone https://github.com/your-username/your-repository-name.git
-```
-
-### 2. Navigate to the Project Folder
-
-```bash
 cd your-repository-name
-```
+2. Environment Setup
+The project uses Docker for consistent environment management.
 
-### 3. Install Dependencies
-
-```bash
+Bash
+# Start the backend and database (MySQL + Adminer)
+docker-compose up -d
+3. Frontend Installation
+Bash
+# Navigate to frontend folder, install, and run
 npm install
-```
-
-### 4. Run the Development Server
-
-```bash
 npm run dev
-```
+Access the UI at http://localhost:5173
 
-### 5. Open in Browser
+API & Communication
+The system utilizes a RESTful API architecture:
 
-Open the local server link provided by Vite, usually:
+Protocol: HTTP/HTTPS
 
-```bash
-http://localhost:5173
-```
+Data Format: JSON
 
----
+Auth: Token-based authentication per request.
 
-## Branching Strategy
-
-The project follows a collaborative Git branching workflow to maintain organized development and avoid conflicts in the main production branch.
-
-### Main Branches
-- `main` → Stable production-ready version
-- `develop` → Primary integration branch for ongoing development
-
-### Feature Branches
-New features are developed in separate feature branches such as:
-
-```bash
-feature/user-authentication
-feature/tos-management
-feature/syllabus-module
-```
-
-Feature branches are merged into `develop` through Pull Requests (PRs) after review and testing.
-
----
-
-## Contributors
-
-| Team Member | Role |
-|---|---|
-| Arra May F. Cañeso | Project Manager |
-| Christian Harold Bite | Lead Developer |
-| Edrian P. Lait | System Analyst |
-| Kristine F. San Lorenzo | Lead Designer |
-
----
-
-## License
-
-This project is licensed under the MIT License.
+Endpoints: Resource-based structure (e.g., /api/tos, /api/courses).
