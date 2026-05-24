@@ -1,57 +1,59 @@
-LPMS: TOS Composition & Admin CMS
-📌 Project Description
-A core sub-module of the Learning Plan Management System (LPMS) for the University of Nueva Caceres (UNC). This system transforms the manual preparation of Tables of Specifications (TOS) into a structured, automated digital workflow. It consists of two synergistic components:
+# LPMS: TOS Composition and Admin CMS
+Project Description
+The Table of Specifications (TOS) Composition Module with Admin Content Management System (CMS) is a core sub-module of the Learning Plan Management System (LPMS) developed for the University of Nueva Caceres (UNC). This system is designed to transform the manual preparation of TOS documents into a structured, automated, and error-free digital workflow.
 
-Admin CMS: A centralized control center for managing academic periods, course catalogs, and faculty assignments.
+The system is divided into two primary components:
 
-TOS Composition Module: An intelligent workspace for instructors to map assessment items to Course Outcomes (COs) and Intended Learning Outcomes (ILOs) with automated mathematical calculations.
+The Admin CMS: A centralized control center for managing institutional data, course catalogs, and faculty assignments.
 
-🛠 Tech Stack
+The TOS Composition Interface: An intelligent workspace for instructors that automates mathematical calculations and ensures alignment with approved curriculum standards.
+
+# Tech Stack
 Frontend
-Framework: React.js (via Vite)
-
-State Management: Client-side state handling
+Framework: React.js (built with Vite)
 
 Styling: CSS3 / Sass
 
-HTTP Client: Axios (for REST API communication)
+HTTP Client: Axios
 
-Backend & Database
+State Management: Client-side state handling and routing
+
+Backend and Database
 Runtime: Node.js
 
 Server Framework: Express.js
 
 Database: MySQL 8.0
 
-ORM: Sequelize (Object-Relational Mapper)
+ORM: Sequelize
 
-Tooling: Docker & Adminer (Containerization and DB management)
+Containerization: Docker and Adminer (for database management)
 
-Design & Productivity
+Design and Tools
 Design: Figma
-
-IDE: Webstorm / VS Code
 
 Version Control: GitHub
 
+Development Environment: Webstorm / VS Code
+
 Key Features
-1. Admin Content Management
-Academic Periods: Manage and activate specific terms (e.g., 2024–2025 Midterms).
+1. Admin Content Management System
+Academic Periods: Centralized creation and activation of academic years, semesters, and exam types.
 
-Course Catalog: Maintain a searchable database of all university courses.
+Course Catalog: Maintenance of a searchable and filterable database of university courses.
 
-CO/ILO Templates: Encode and map curriculum standards (Outcomes) to courses.
+CO and ILO Templates: Management of Course Outcomes and Intended Learning Outcomes mapped to specific courses.
 
-Course Assignments: Link instructors to specific course offerings per period.
+Assignments: Dynamic linking of instructors to specific courses for active academic terms.
 
-2. Instructor TOS Workspace
-Outcome Overview: Auto-populated, read-only view of approved COs and ILOs.
+2. Instructor TOS Module
+Automated Data Retrieval: Direct fetching of approved COs and ILOs from the Learning Plan.
 
-Item Mapping: Dynamic interface to add questions, tag cognitive levels (Bloom’s Taxonomy), and assign points.
+Dynamic Calculations: Real-time computation of percentage weights and point distributions based on target inputs.
 
-Automated Calculations: Real-time computation of percentage weights and point distributions.
+Assessment Mapping: Tools for tagging items with cognitive levels (Bloom’s Taxonomy) and point values.
 
-TOS Preview: Formatted, read-only validation view before final submission.
+Reusability: Features to save drafts and pre-fill data from previous TOS reports.
 
 Installation Guide
 1. Clone the Repository
@@ -59,25 +61,32 @@ Bash
 git clone https://github.com/your-username/your-repository-name.git
 cd your-repository-name
 2. Environment Setup
-The project uses Docker for consistent environment management.
+The project uses Docker to manage the database and backend environment.
 
 Bash
-# Start the backend and database (MySQL + Adminer)
 docker-compose up -d
-3. Frontend Installation
+3. Frontend Setup
 Bash
-# Navigate to frontend folder, install, and run
+# Install dependencies
 npm install
+
+# Start the development server
 npm run dev
-Access the UI at http://localhost:5173
+The application will be accessible at http://localhost:5173.
 
-API & Communication
-The system utilizes a RESTful API architecture:
+Interface and Communication
+Communication Protocol
+All communication between the React.js frontend and Express.js backend occurs through a RESTful API.
 
-Protocol: HTTP/HTTPS
+Data Format: JSON (JavaScript Object Notation).
 
-Data Format: JSON
+Authentication: Token-based authentication required for all data-sensitive requests.
 
-Auth: Token-based authentication per request.
+API Structure
+GET: Resource retrieval (Courses, Outcomes, TOS Status)
 
-Endpoints: Resource-based structure (e.g., /api/tos, /api/courses).
+POST: Creation of new records (Assignments, Periods)
+
+PUT / PATCH: Bulk updates and status changes
+
+DELETE: Removal of specific assignments or records
