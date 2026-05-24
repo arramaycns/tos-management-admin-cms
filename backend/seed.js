@@ -1,4 +1,4 @@
-import { sequelize, Course, CourseOutcome, IloItem, TosStatus, User } from './models/index.js';
+import { sequelize, Course, CourseOutcome, IloItem, TosStatus, User, AcademicPeriod, CourseAssignment } from './models/index.js';
 
 const courses = [
     { code: 'BSCS313L', name: 'Human & Computer Interaction' },
@@ -244,8 +244,29 @@ async function seed() {
     await Course.bulkCreate(courses);
     await TosStatus.bulkCreate(statuses);
 
-    await User.create({ username: 'admin', passwordHash: 'admin123', name: 'Administrator', role: 'admin' });
+    await User.create({ username: 'admin', passwordHash: 'admin123', name: 'Dr. Juan M. Dela Cruz', role: 'admin' });
     await User.create({ username: 'instructor', passwordHash: 'instructor123', name: 'NORTON, MONICA', role: 'instructor' });
+
+    await AcademicPeriod.bulkCreate([
+        { academicYear: '2024-2025', semester: '1st Semester', examType: 'Midterm', isActive: false },
+        { academicYear: '2024-2025', semester: '1st Semester', examType: 'Finals', isActive: false },
+        { academicYear: '2024-2025', semester: '2nd Semester', examType: 'Midterm', isActive: false },
+        { academicYear: '2024-2025', semester: '2nd Semester', examType: 'Finals', isActive: false },
+        { academicYear: '2025-2026', semester: '1st Semester', examType: 'Midterm', isActive: true },
+        { academicYear: '2025-2026', semester: '1st Semester', examType: 'Finals', isActive: false },
+    ]);
+
+    const instructor = await User.findOne({ where: { username: 'instructor' } });
+    const activePeriod = await AcademicPeriod.findOne({ where: { isActive: true } });
+    if (instructor && activePeriod) {
+        const courseCodes = courses.map(c => c.code);
+        const assignments = courseCodes.map(code => ({
+            courseCode: code,
+            instructorId: instructor.id,
+            academicPeriodId: activePeriod.id
+        }));
+        await CourseAssignment.bulkCreate(assignments);
+    }
 
     for (const data of courseData) {
         for (const outcome of data.outcomes) {

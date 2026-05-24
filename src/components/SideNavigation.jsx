@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import styles from '../styles/SideNavigation.module.sass'
 import unclogo from '../assets/unclogo.png';
 import {FileText} from "react-feather";
 import {useNavigate, useLocation} from "react-router-dom";
 import {LogOut} from "react-feather";
 import {useAuth} from "../context/AuthContext";
+import ConfirmModal from './ConfirmModal';
 
 const SideNavigation = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { logout } = useAuth();
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
     let selected = 'Syllabus';
 
@@ -25,6 +28,7 @@ const SideNavigation = () => {
     };
 
     const handleLogout = () => {
+        setShowLogoutConfirm(false);
         logout();
         navigate('/login', { replace: true });
     };
@@ -42,10 +46,20 @@ const SideNavigation = () => {
                     <FileText size={24}/> TOS
                 </div>
 
-                <div className={styles.listB} onClick={handleLogout}>
+                <div className={styles.listB} onClick={() => setShowLogoutConfirm(true)}>
                     <LogOut size={24} color={'#F94545'}/> Log Out
                 </div>
             </div>
+
+            <ConfirmModal
+                open={showLogoutConfirm}
+                title="Log Out"
+                message="Are you sure you want to log out?"
+                confirmLabel="Log Out"
+                variant="danger"
+                onConfirm={handleLogout}
+                onCancel={() => setShowLogoutConfirm(false)}
+            />
         </div>
     )
 }

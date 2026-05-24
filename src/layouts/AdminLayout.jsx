@@ -7,7 +7,7 @@ export default function AdminLayout({ children, title }) {
     const { user } = useAuth();
     return (
         <Skeleton
-            header={<Header role="Administrator" name={user?.name || 'Admin'} />}
+            header={<Header role="Administrator" name={user?.name || 'Administrator'} />}
             content={children}
             nav={<AdminSidebar />}
         />

@@ -74,10 +74,20 @@
   &:focus
     border-color: #EA1212
 
+select.input
+  appearance: none
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%236B7280' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E")
+  background-repeat: no-repeat
+  background-position: right 12px center
+  padding-right: 32px
+  cursor: pointer
+
 .formActions
   display: flex
+  justify-content: flex-end
   gap: 10px
   margin-top: 16px
+  width: 100%
 
 .saveBtn
   padding: 10px 24px
@@ -89,6 +99,7 @@
   font-weight: 500
   cursor: pointer
   font-family: 'Poppins', sans-serif
+  flex: 1
 
   &:hover
     background: #C00000
@@ -103,26 +114,67 @@
   font-weight: 500
   cursor: pointer
   font-family: 'Poppins', sans-serif
+  flex: 1
 
   &:hover
     background: #E5E7EB
 
+.table
+  width: 100%
+  table-layout: fixed
+  border-collapse: collapse
+
 .tableContainer
   flex-grow: 1
   overflow-y: auto
+  border: 1px solid #E5E7EB
+  border-radius: 8px
 
   table
     width: 100%
-    min-width: 600px
+    table-layout: fixed
+    border-collapse: collapse
+    display: table
+
+  :global
+    thead
+      display: table-header-group
+
+      tr
+        display: table-row
+
+    tbody
+      display: table-row-group
+
+      tr
+        display: table-row
 
     th
-      font-size: 13px
+      display: table-cell
+      font-size: 12px
       color: #6B7280
       text-transform: uppercase
       letter-spacing: 0.5px
+      text-align: left
+      padding: 10px 12px
+      background: #F9FAFB
+      border-bottom: 2px solid #E5E7EB
+      white-space: nowrap
+      vertical-align: middle
+      font-weight: 600
 
     td
+      display: table-cell
       font-size: 14px
+      padding: 10px 12px
+      border-bottom: 1px solid #F3F4F6
+      vertical-align: middle
+
+    tbody tr:last-child td
+      border-bottom: none
+
+    tbody tr:hover
+      background: #FAFAFA
 
 .badge
   padding: 4px 12px
@@ -146,6 +198,7 @@
 .iconBtn
   width: 32px
   height: 32px
+  padding: 0
   display: flex
   align-items: center
   justify-content: center
@@ -155,6 +208,10 @@
   cursor: pointer
   color: #374151
   font-family: 'Poppins', sans-serif
+
+  svg
+    stroke: currentColor
+    color: inherit
 
   &:hover
     background: #F3F4F6
@@ -166,3 +223,79 @@
 .neutralBtn
   color: #059669
   border-color: #A7F3D0
+
+.modalOverlay
+  position: fixed
+  inset: 0
+  background: rgba(0, 0, 0, 0.4)
+  display: flex
+  align-items: center
+  justify-content: center
+  z-index: 100
+
+.formModal
+  background: white
+  border-radius: 12px
+  padding: 28px 32px
+  width: 600px
+  max-width: 90vw
+  max-height: 85vh
+  overflow-y: auto
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15)
+
+  h3
+    margin: 0
+    font-size: 18px
+    font-weight: 600
+
+.modalHeader
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 20px
+
+.modalClose
+  width: 32px
+  height: 32px
+  display: flex
+  align-items: center
+  justify-content: center
+  border: none
+  border-radius: 6px
+  background: #F3F4F6
+  cursor: pointer
+  font-size: 18px
+  color: #6B7280
+  font-family: 'Poppins', sans-serif
+
+  &:hover
+    background: #E5E7EB
+    color: #111827
+
+.filterRow
+  display: flex
+  gap: 12px
+  align-items: center
+  flex-wrap: wrap
+
+.searchBox
+  display: flex
+  align-items: center
+  border: 1px solid #D1D5DB
+  border-radius: 6px
+  padding: 0 10px
+  flex: 1
+  min-width: 200px
+  background: white
+  transition: border-color 0.15s
+
+  &:focus-within
+    border-color: #EA1212
+
+  input
+    border: none
+    flex: 1
+    padding: 10px 8px
+    outline: none
+    font-family: 'Poppins', sans-serif
+    font-size: 14px

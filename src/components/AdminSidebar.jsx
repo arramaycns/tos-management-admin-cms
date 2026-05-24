@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import styles from '../styles/SideNavigation.module.sass';
 import unclogo from '../assets/unclogo.png';
 import { Calendar, Book, Layers, Users, LogOut } from 'react-feather';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import ConfirmModal from './ConfirmModal';
 
 const items = [
     { label: 'Academic Periods', path: '/admin/academic-periods', icon: Calendar },
@@ -15,8 +17,10 @@ export default function AdminSidebar() {
     const navigate = useNavigate();
     const location = useLocation();
     const { logout } = useAuth();
+    const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
     const handleLogout = () => {
+        setShowLogoutConfirm(false);
         logout();
         navigate('/login', { replace: true });
     };
@@ -36,10 +40,20 @@ export default function AdminSidebar() {
                         </div>
                     );
                 })}
-                <div className={styles.listB} onClick={handleLogout}>
+                <div className={styles.listB} onClick={() => setShowLogoutConfirm(true)}>
                     <LogOut size={24} color={'#F94545'} /> Log Out
                 </div>
             </div>
+
+            <ConfirmModal
+                open={showLogoutConfirm}
+                title="Log Out"
+                message="Are you sure you want to log out?"
+                confirmLabel="Log Out"
+                variant="danger"
+                onConfirm={handleLogout}
+                onCancel={() => setShowLogoutConfirm(false)}
+            />
         </div>
     );
 }

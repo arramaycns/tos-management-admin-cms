@@ -20,8 +20,12 @@ router.post('/login', async (req, res) => {
     });
 });
 
-router.get('/me', authenticateToken, (req, res) => {
-    res.json({ user: req.user });
+router.get('/me', authenticateToken, async (req, res) => {
+    const user = await User.findByPk(req.user.id, {
+        attributes: ['id', 'username', 'name', 'role']
+    });
+    if (!user) return res.status(401).json({ error: 'User no longer exists' });
+    res.json({ user });
 });
 
 router.post('/logout', (req, res) => {

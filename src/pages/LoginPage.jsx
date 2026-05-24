@@ -24,7 +24,7 @@ export default function LoginPage() {
             const user = await login(username, password);
             navigate(user.role === 'admin' ? '/admin' : '/assignedtos', { replace: true });
         } catch (err) {
-            setError('Invalid username or password');
+            setError(err.message === 'Login failed' ? 'Unable to connect. Please try again.' : 'Invalid username or password');
         } finally {
             setBusy(false);
         }
@@ -59,6 +59,11 @@ export default function LoginPage() {
                     <button className={styles.btn} type="submit" disabled={busy}>
                         {busy ? 'Signing in...' : 'Sign In'}
                     </button>
+                    <div className={styles.forgotRow}>
+                        <a href="/forgot-password" className={styles.forgotLink} onClick={e => { e.preventDefault(); alert('Please contact your system administrator to reset your password.'); }}>
+                            Forgot Password?
+                        </a>
+                    </div>
                 </form>
             </div>
         </div>

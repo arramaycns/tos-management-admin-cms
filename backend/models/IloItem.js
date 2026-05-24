@@ -12,6 +12,9 @@ const IloItem = sequelize.define('IloItem', {
         allowNull: false,
         field: 'co_id'
     },
+    label: {
+        type: DataTypes.STRING(20)
+    },
     description: {
         type: DataTypes.TEXT
     },

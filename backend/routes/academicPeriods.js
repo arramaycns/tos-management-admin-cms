@@ -32,11 +32,21 @@ router.put('/:id', async (req, res) => {
     const period = await AcademicPeriod.findByPk(req.params.id);
     if (!period) return res.status(404).json({ error: 'Academic period not found' });
 
+    const updates = {};
+    if (academicYear !== undefined) updates.academicYear = academicYear;
+    if (semester !== undefined) updates.semester = semester;
+    if (examType !== undefined) updates.examType = examType;
+
     if (isActive === true) {
         await AcademicPeriod.update({ isActive: false }, { where: { isActive: true } });
+        updates.isActive = true;
+    } else if (isActive === false) {
+        updates.isActive = false;
     }
 
-    await period.update({ academicYear, semester, examType, isActive });
+    if (Object.keys(updates).length === 0) return res.status(400).json({ error: 'No fields to update' });
+
+    await period.update(updates);
     res.json(period);
 });
 

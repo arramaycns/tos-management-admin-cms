@@ -13,11 +13,21 @@ const CourseOutcome = sequelize.define('CourseOutcome', {
         field: 'course_code'
     },
     co: {
-        type: DataTypes.STRING(10),
+        type: DataTypes.STRING(20),
         allowNull: false
     },
     description: {
         type: DataTypes.TEXT
+    },
+    totalHours: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        field: 'total_hours'
+    },
+    totalPercentage: {
+        type: DataTypes.INTEGER,
+        defaultValue: 0,
+        field: 'total_percentage'
     },
     totalItems: {
         type: DataTypes.INTEGER,

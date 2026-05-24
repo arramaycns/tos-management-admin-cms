@@ -17,6 +17,7 @@ function App() {
             <Router>
                 <div className="appPage">
                     <Routes>
+                        <Route path={'/'} element={<Navigate to="/login" replace />} />
                         <Route path={'/login'} element={<LoginPage />} />
                         <Route path={'/admin'} element={<ProtectedRoute role="admin"><AdminLayout><Navigate to="/admin/academic-periods" replace /></AdminLayout></ProtectedRoute>} />
                         <Route path={'/admin/academic-periods'} element={<ProtectedRoute role="admin"><AdminLayout><AdminAcademicPeriods /></AdminLayout></ProtectedRoute>} />
